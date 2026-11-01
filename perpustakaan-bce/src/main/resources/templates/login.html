@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Masuk - Perpustakaan</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="login-box card">
+    <h1>&#128218; Perpustakaan</h1>
+    <p class="subtitle">Masuk sebagai anggota untuk meminjam buku.</p>
+
+    <div class="alert alert-error" th:if="${pesan}" th:text="${pesan}">Pesan error</div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-row">
+            <input type="text" name="idAnggota" placeholder="ID anggota, mis. A001" required>
+            <button type="submit">Masuk</button>
+        </div>
+    </form>
+    <p class="hint">Data contoh: <b>A001</b> (batas 2 buku) dan <b>A002</b> (batas 1 buku).</p>
+    <p class="hint">Pustakawan? <a th:href="@{/stok}">Buka halaman Kelola Stok</a></p>
+</div>
+</body>
+</html>

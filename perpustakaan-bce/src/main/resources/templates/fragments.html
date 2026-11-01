@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Fragment navbar dipakai ulang di semua halaman: th:replace="~{fragments :: navbar}" -->
+<nav th:fragment="navbar" class="navbar">
+    <span class="brand">&#128218; Perpustakaan FILKOM</span>
+    <a th:href="@{/pinjam}">Pinjam Buku</a>
+    <a th:href="@{/stok}">Kelola Stok (Pustakawan)</a>
+    <a th:href="@{/logout}">Keluar</a>
+</nav>
+</body>
+</html>

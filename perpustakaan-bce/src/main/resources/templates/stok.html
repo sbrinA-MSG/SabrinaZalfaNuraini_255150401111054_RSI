@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelola Stok Buku</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container">
+    <div class="alert alert-error" th:if="${pesan}" th:text="${pesan}">Pesan error</div>
+    <div class="alert alert-ok" th:if="${pesanSukses}" th:text="${pesanSukses}">Berhasil</div>
+
+    <div class="card">
+        <h1>Kelola Stok Buku</h1>
+        <p class="subtitle">Halaman untuk aktor Pustakawan.</p>
+        <table>
+            <tr><th>ID</th><th>Judul</th><th>Stok</th><th>Tambah Stok</th></tr>
+            <tr th:each="b : ${daftarBuku}">
+                <td th:text="${b.idBuku}">B001</td>
+                <td th:text="${b.judul}">Judul</td>
+                <td th:text="${b.stok}">0</td>
+                <td>
+                    <form th:action="@{/stok/tambah-stok}" method="post" class="form-row">
+                        <input type="hidden" name="idBuku" th:value="${b.idBuku}">
+                        <input type="number" name="jumlah" min="1" value="1" style="width:80px" required>
+                        <button type="submit">Tambah</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Tambah Buku Baru</h2>
+        <form th:action="@{/stok/tambah-buku}" method="post">
+            <div class="form-row">
+                <input type="text" name="idBuku" placeholder="ID (mis. B005)" maxlength="10" required>
+                <input type="text" name="judul" placeholder="Judul buku" maxlength="200" style="flex:1" required>
+                <input type="number" name="stok" min="0" value="1" style="width:90px" required>
+                <button type="submit">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

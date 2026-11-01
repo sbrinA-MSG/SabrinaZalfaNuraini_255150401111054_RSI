@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bukti Peminjaman</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container">
+    <div class="card">
+        <h1>Bukti Peminjaman</h1>
+        <p class="subtitle">Peminjaman berhasil dicatat.</p>
+        <table>
+            <tr><td>No. Transaksi</td><td th:text="${bukti.idTransaksi}">T0001</td></tr>
+            <tr><td>Anggota</td><td th:text="${bukti.namaAnggota}">Nama</td></tr>
+            <tr><td>Buku</td><td th:text="${bukti.judulBuku}">Judul</td></tr>
+            <tr><td>Tanggal</td><td th:text="${bukti.tanggalPinjam}">2026-11-01</td></tr>
+            <tr><td>Status</td><td th:text="${bukti.status}">DIPINJAM</td></tr>
+        </table>
+        <p style="margin-top:16px"><a class="btn" th:href="@{/pinjam}">Kembali</a></p>
+    </div>
+</div>
+</body>
+</html>

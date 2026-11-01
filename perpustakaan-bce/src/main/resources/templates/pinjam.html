@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pinjam Buku</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<div class="container">
+    <div class="card">
+        <h1>Pinjam Buku</h1>
+        <p class="subtitle">Anggota: <b th:text="${namaAnggota}">Nama</b>
+            (<span th:text="${idAnggota}">A001</span>)</p>
+
+        <!-- Alur alternatif: pesan gagal + opsi reservasi -->
+        <div class="alert alert-error" th:if="${pesan}">
+            <span th:text="${pesan}">Stok buku habis</span>
+            <span th:if="${bisaReservasi}"> &mdash; klik tombol <b>Reservasi</b> pada buku tersebut.</span>
+        </div>
+        <div class="alert alert-ok" th:if="${pesanSukses}" th:text="${pesanSukses}">Berhasil</div>
+
+        <table>
+            <tr><th>ID</th><th>Judul</th><th>Stok</th><th>Aksi</th></tr>
+            <tr th:each="b : ${daftarBuku}">
+                <td th:text="${b.idBuku}">B001</td>
+                <td th:text="${b.judul}">Judul</td>
+                <td>
+                    <span th:if="${b.cekStok()}" class="badge badge-ok" th:text="${b.stok}">3</span>
+                    <span th:unless="${b.cekStok()}" class="badge badge-habis">Habis</span>
+                </td>
+                <td>
+                    <form th:if="${b.cekStok()}" th:action="@{/pinjam}" method="post">
+                        <input type="hidden" name="idBuku" th:value="${b.idBuku}">
+                        <button type="submit">Pinjam</button>
+                    </form>
+                    <form th:unless="${b.cekStok()}" th:action="@{/reservasi}" method="post">
+                        <input type="hidden" name="idBuku" th:value="${b.idBuku}">
+                        <button type="submit" class="btn-warn">Reservasi</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Riwayat Peminjaman Saya</h2>
+        <table th:if="${!riwayat.isEmpty()}">
+            <tr><th>No. Transaksi</th><th>Buku</th><th>Tanggal</th><th>Status</th></tr>
+            <tr th:each="r : ${riwayat}">
+                <td th:text="${r.idTransaksi}">T0001</td>
+                <td th:text="${r.judulBuku}">Judul</td>
+                <td th:text="${r.tanggalPinjam}">2026-11-01</td>
+                <td th:text="${r.status}">DIPINJAM</td>
+            </tr>
+        </table>
+        <p class="hint" th:if="${riwayat.isEmpty()}">Belum ada peminjaman.</p>
+    </div>
+</div>
+</body>
+</html>

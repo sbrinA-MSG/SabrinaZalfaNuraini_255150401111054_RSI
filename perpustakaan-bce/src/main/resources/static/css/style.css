@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #f2f5fa; color: #1f2a44; }
+.navbar { background: #0f4c8a; color: #fff; padding: 12px 32px; display: flex; align-items: center; gap: 24px; }
+.navbar .brand { font-weight: 700; font-size: 18px; margin-right: auto; }
+.navbar a { color: #dbe9ff; text-decoration: none; font-size: 14px; }
+.navbar a:hover { color: #fff; text-decoration: underline; }
+.container { max-width: 960px; margin: 28px auto; padding: 0 16px; }
+.card { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+h1 { margin: 0 0 4px; font-size: 24px; color: #0f4c8a; }
+h2 { margin: 0 0 12px; font-size: 18px; }
+.subtitle { color: #5b6784; margin: 0 0 16px; font-size: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: #0f4c8a; color: #fff; text-align: left; padding: 10px; }
+td { padding: 10px; border-bottom: 1px solid #e3e8f2; }
+tr:nth-child(even) td { background: #f7f9fd; }
+input[type=text], input[type=number] { padding: 8px 10px; border: 1px solid #b9c3d8; border-radius: 6px; font-size: 14px; }
+button, .btn { background: #0f4c8a; color: #fff; border: 0; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; text-decoration: none; display: inline-block; }
+button:hover, .btn:hover { background: #0a3a6b; }
+.btn-warn { background: #c7740d; }
+.btn-warn:hover { background: #9e5a08; }
+.btn-light { background: #e3e8f2; color: #1f2a44; }
+.btn-light:hover { background: #cfd7e8; }
+.alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+.alert-error { background: #fdecea; color: #b00020; border: 1px solid #f5c2c0; }
+.alert-ok { background: #e6f4ea; color: #1b6b32; border: 1px solid #b7dfc3; }
+.badge { padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.badge-ok { background: #e6f4ea; color: #1b6b32; }
+.badge-habis { background: #fdecea; color: #b00020; }
+.form-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.hint { font-size: 13px; color: #5b6784; margin-top: 12px; }
+.login-box { max-width: 420px; margin: 70px auto; }
